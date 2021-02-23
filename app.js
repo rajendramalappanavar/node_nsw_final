@@ -46,7 +46,8 @@ const app = express();
 const AWS= require("aws-sdk");
 
 app.get('/',(req, res)=>{
-res.send("Welcome Rajendra", process.env.ACCOUNTID)
+    const e = process.env.ACCOUNTID
+res.send(e)
 })
 
 app.get('/checkfile',async(req, res)=>{
