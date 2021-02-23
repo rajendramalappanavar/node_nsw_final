@@ -43,10 +43,38 @@
 
 const express = require('express');
 const app = express();
+const AWS= require("aws-sdk");
 
 app.get('/',(req, res)=>{
 res.send("welcome rajendra")
 })
+
+app.get('/checkfile',async(req, res)=>{
+    console.log("coming")
+AWS.config.update({
+        accessKeyId: "AKIARKUF3WJSZ5TJTVG6",
+        secretAccessKey: "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",
+        region: "ap-south-1"
+    });
+const s3 = new AWS.S3();
+
+const params = {
+        Bucket: "testvajra",
+        Key: "middle_banner.png" //if any sub folder-> path/of/the/folder.ext
+}
+try {
+        await s3.headObject(params).promise()
+        res.send({
+            Message : "File Found in S3"
+        })
+    } catch (err) {
+        res.send({
+            Message : "File Not Found"
+        })
+}
+})
+
+
 
 const port = process.env.PORT || 3000;
 app.listen(port, ()=>{
