@@ -46,16 +46,17 @@ const app = express();
 const AWS= require("aws-sdk");
 
 app.get('/',(req, res)=>{
-    const e = process.env.ACCOUNTID
-res.send(e)
+res.send({
+    Message: "Hello team how you doing"
+});
 })
 
 app.get('/checkfile',async(req, res)=>{
     console.log("coming")
 AWS.config.update({
-        accessKeyId: "",
-        secretAccessKey: "",
-        region: ""
+        accessKeyId: process.env.ACCOUNTID,
+        secretAccessKey: process.env.SECRETACCESSKEY,
+        region: process.env.REGION
     });
 const s3 = new AWS.S3();
 
