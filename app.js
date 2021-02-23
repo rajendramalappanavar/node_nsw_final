@@ -52,9 +52,9 @@ res.send("welcome rajendra")
 app.get('/checkfile',async(req, res)=>{
     console.log("coming")
 AWS.config.update({
-        accessKeyId: "AKIARKUF3WJSZ5TJTVG6",
-        secretAccessKey: "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",
-        region: "ap-south-1"
+        accessKeyId: "",
+        secretAccessKey: "",
+        region: ""
     });
 const s3 = new AWS.S3();
 
