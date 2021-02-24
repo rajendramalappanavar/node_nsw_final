@@ -62,7 +62,7 @@ const s3 = new AWS.S3();
 
 const params = {
         Bucket: "testvajra",
-        Key: "middle_banner.png" //if any sub folder-> path/of/the/folder.ext
+        Key: "111111.pdf" //if any sub folder-> path/of/the/folder.ext
 }
 try {
         await s3.headObject(params).promise()
