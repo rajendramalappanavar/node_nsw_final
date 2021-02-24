@@ -52,17 +52,22 @@ res.send({
 })
 
 app.get('/checkfile',async(req, res)=>{
-    console.log("coming")
+    
+    
+    // res.send(req.query.id)
+    // http://localhost:3000/?tagId=5&id=%22ksfkjs%22
+    
+    
 AWS.config.update({
         accessKeyId: process.env.ACCOUNTID,
         secretAccessKey: process.env.SECRETACCESSKEY,
         region: process.env.REGION
     });
 const s3 = new AWS.S3();
-
+const fn = req.query.id;
 const params = {
         Bucket: "testvajra",
-        Key: "111111.pdf" //if any sub folder-> path/of/the/folder.ext
+        Key: fn //if any sub folder-> path/of/the/folder.ext
 }
 try {
         await s3.headObject(params).promise()
